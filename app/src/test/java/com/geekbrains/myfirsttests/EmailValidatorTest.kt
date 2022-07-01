@@ -41,5 +41,17 @@ class EmailValidatorTest {
         assertFalse(EmailValidator.isValidEmail(null))
     }
 
-    
+    @Test
+    fun emailValidator_No_English_ReturnsFalse() {
+        assertFalse(EmailValidator.isValidEmail("aaa@ффф"))
+    }
+
+    @Test
+    fun emailValidator_No_Domain_ReturnsFalse() {
+        assertFalse(EmailValidator.isValidEmail("email@"))
+    }
+    @Test
+    fun emailValidator_Illegals_Symbol_ReturnsError() {
+        assertTrue(EmailValidator.isValidEmail("N/S@email.com"))
+    }
 }
